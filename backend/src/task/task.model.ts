@@ -10,20 +10,20 @@ import { ITask, TaskState } from "./interfaces/task.interface";
 @Entity("tasks")
 export class Task implements ITask {
   @PrimaryGeneratedColumn("uuid")
-  id: string;
+  id!: string;
 
   @Column({ type: "varchar", length: 255 })
-  title: string;
+  title!: string;
 
   @Column({ type: "text" })
-  description: string;
+  description!: string;
 
   @Column({ type: "enum", enum: TaskState, default: TaskState.PENDING })
-  state: TaskState;
+  state!: TaskState;
 
   @CreateDateColumn({ name: "created_at" })
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn({ name: "updated_at" })
-  updatedAt: Date;
+  updatedAt!: Date;
 }

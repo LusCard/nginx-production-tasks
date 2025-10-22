@@ -7,6 +7,8 @@
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
+    "emitDecoratorMetadata": true, // <--- HABILITAR
+    "experimentalDecorators": true,
     "module": "commonjs",
     "target": "es2016",
     "types": [],
