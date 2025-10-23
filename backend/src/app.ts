@@ -1,15 +1,15 @@
 import express, { Application } from "express";
 import "reflect-metadata";
-const app: Application = express();
-const PORT = process.env.PORT || 3001;
+import taskRouter from "./modules/task/routes/task.route";
 
-app.use(express.json());
+export const createApp = () => {
+  const app: Application = express();
 
-app.use("/app/tasks");
-app.get("/", (req, res) => {
-  res.send("Task mangr api running");
-});
+  app.use(express.json());
 
-app.listen(PORT, () => {
-  console.log(`Servidor escuchando en http://localhost:${PORT}`);
-});
+  app.get("/", (req, res) => {
+    res.send("Task mangr api running");
+  });
+
+  return app;
+};
