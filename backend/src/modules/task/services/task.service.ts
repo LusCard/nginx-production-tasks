@@ -30,6 +30,6 @@ export class TaskService {
     return this.taskRepository.updateTask(id, taskDto);
   }
   public async deleteTask(id: string): Promise<boolean> {
-    return this.deleteTask(id);
+    return this.taskRepository.deleteTask(id);
   }
 }
