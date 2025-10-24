@@ -1,15 +1,12 @@
 import { Router } from "express";
+import { TaskController } from "../controllers/task.controller";
 
-const taskRouter = Router();
-
-taskRouter.get("/api", (req, res) => {
-  return res.status(103).send({ message: "Yes? This is the API" });
-});
-
-taskRouter.get("/");
-taskRouter.get("/:id");
-taskRouter.post("/:");
-taskRouter.patch("/:id");
-taskRouter.delete("/:id");
-
-export default taskRouter;
+export const TaskRoutes = (taskController: TaskController): Router => {
+  const route = Router();
+  route.get("/", taskController.getAllTasks);
+  route.get("/:id", taskController.getTaskById);
+  route.post("/", taskController.createTask);
+  route.patch("/:id", taskController.updateTask);
+  route.delete("/:id", taskController.deleteTask);
+  return route;
+};

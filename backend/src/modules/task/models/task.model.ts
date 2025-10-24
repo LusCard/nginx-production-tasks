@@ -5,7 +5,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
-import { ITask, TaskState } from "./interfaces/task.interface";
+import { ITask, TaskState } from "../interfaces/task.interface";
 
 @Entity("tasks")
 export class Task implements ITask {

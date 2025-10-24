@@ -2,7 +2,7 @@ import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { IDBConnection } from "../database/interfaces/database.interface";
 import envs from "./envs.config";
-import * as dotenv from "dotenv";
+import "dotenv/config";
 
 export const AppDataSource = new DataSource({
   type: process.env.DB_TYPE! as any,
