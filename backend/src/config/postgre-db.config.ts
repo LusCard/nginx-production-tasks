@@ -2,14 +2,15 @@ import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { IDBConnection } from "../database/interfaces/database.interface";
 import envs from "./envs.config";
+import * as dotenv from "dotenv";
 
 export const AppDataSource = new DataSource({
-  type: envs.TYPE as any,
-  host: envs.HOST,
-  port: Number(envs.DB_PORT),
-  username: envs.USER,
-  password: envs.PASSWORD,
-  database: envs.DB_NAME,
+  type: process.env.DB_TYPE! as any,
+  host: process.env.DB_HOST!,
+  port: Number(process.env.DB_PORT!),
+  username: process.env.DB_USER!,
+  password: process.env.DB_PASSWORD!,
+  database: process.env.DB_NAME!,
   synchronize: false,
   logging: false,
   entities: ["src/modules/**/*.model.ts"],
