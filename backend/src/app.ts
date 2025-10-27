@@ -1,4 +1,5 @@
 import express, { Application } from "express";
+import cors from "cors";
 import "reflect-metadata";
 import { AppDataSource } from "./config/postgre-db.config";
 import { Task } from "./modules/task/models/task.model";
@@ -10,6 +11,12 @@ import { TaskController } from "./modules/task/controllers/task.controller";
 export const createApp = () => {
   const app: Application = express();
   app.use(express.json());
+  app.use(
+    cors({
+      origin: ["http://localhost:5173"],
+      methods: ["GET", "POST", "PATCH", "DELETE"],
+    })
+  );
   try {
     const ormRepository = AppDataSource.getRepository(Task);
     const taskRepository = new TaskRepository(ormRepository);

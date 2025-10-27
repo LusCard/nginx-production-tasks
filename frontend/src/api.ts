@@ -28,7 +28,7 @@ export const updateTask = async (
   task: Partial<ITask> & { id: string }
 ): Promise<ITask> => {
   const response = await fetch(`${API_URL}/${task.id}`, {
-    method: "PUT", // or PATCH, depending on your backend
+    method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(task),
   });
