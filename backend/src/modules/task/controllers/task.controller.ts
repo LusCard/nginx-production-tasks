@@ -48,6 +48,9 @@ export class TaskController {
       req.params.id ?? "",
       taskDto
     );
+    if (!updatedTask) {
+      return res.status(304).json({ message: "Task not updated" });
+    }
     return res.status(200).json(updatedTask);
   }
 
@@ -56,6 +59,6 @@ export class TaskController {
     if (!wasDeleted) {
       return res.status(404).json({ message: "Task not found" });
     }
-    return res.status(204).send();
+    return res.status(204).send({ message: "Task deleted" });
   }
 }
